@@ -1,6 +1,5 @@
 package com.eatup.authserver.security;
 
-import com.eatup.authserver.entity.UserEntity;
 import com.eatup.authserver.model.LoginUserModel;
 import com.eatup.authserver.repository.UserRepository;
 import com.eatup.authserver.service.EatupCustomRepository;
@@ -15,16 +14,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService  {
 	
 	@Autowired
 	private BCryptPasswordEncoder encoder;
-	@Autowired
-	private UserRepository userRepository;
-
 
 	@Autowired
 	private EatupCustomRepository eatupCustomRepository;
@@ -47,53 +42,6 @@ public class UserDetailsServiceImpl implements UserDetailsService  {
 				return new User(userAndRolesByUsername.get(0).getUserName(), encoder.encode(userAndRolesByUsername.get(0).getPassword()), grantedAuthorities);
 			}
 		}
-
-
 		throw new UsernameNotFoundException("Username: " + username + " not found");
-	}
-
-	private static class AppUser {
-		private Integer id;
-	    private String username, password;
-	    private List<String> role;
-	    
-		public AppUser(Integer id, String username, String password, List<String> role) {
-	    	this.id = id;
-	    	this.username = username;
-	    	this.password = password;
-	    	this.role = role;
-	    }
-
-		public Integer getId() {
-			return id;
-		}
-
-		public void setId(Integer id) {
-			this.id = id;
-		}
-
-		public String getUsername() {
-			return username;
-		}
-
-		public void setUsername(String username) {
-			this.username = username;
-		}
-
-		public String getPassword() {
-			return password;
-		}
-
-		public void setPassword(String password) {
-			this.password = password;
-		}
-
-	    public List<String> getRole() {
-			return role;
-		}
-
-		public void setRole(List<String> role) {
-			this.role = role;
-		}
 	}
 }

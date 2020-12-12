@@ -10,10 +10,10 @@ import java.util.List;
 @RequestMapping("/auth")
 public class AuthController {
 
-
     @PostMapping("/signup")
-    public void login() {
-        System.out.println("login");
+    public void signup() {
+        // implement code
+        System.out.println("signup");
     }
 
 }
