@@ -1,10 +1,10 @@
-package com.eatup.authserver;
+package com.eatup.zuul;
 
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AuthServerApplicationTests {
+class GatewayServerApplicationTests {
 
 	@Test
 	void contextLoads() {

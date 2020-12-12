@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="users" author="onur" failOnError="false">
+        <createTable tableName="users">
+            <column name="id"  autoIncrement="true"  type="bigint">
+                <constraints primaryKey="true"></constraints>
+            </column>
+            <column name="user_name" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address_id" type="bigint"></column>
+            <column name="description" type="varchar"></column>
+            <column name="location" type="varchar"></column>
+            <column name="verified" type="boolean"></column>
+            <column name="active" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="birth_date" type="date"></column>
+            <column name="created_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="roles" author="onur">
+        <createTable tableName="roles">
+            <column name="id" autoIncrement="true" type="INTEGER">
+                <constraints primaryKey="true"></constraints>
+            </column>
+            <column name="name" type="varchar"></column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="user_role" author="onur" failOnError="false">
+        <createTable tableName="user_role">
+            <column name="id"  autoIncrement="true"  type="bigint">
+                <constraints primaryKey="true"></constraints>
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="user_role"
+                                 constraintName="FK_USER_ID_ROLE"
+                                 referencedColumnNames="id"
+                                 referencedTableName="users"/>
+        <addForeignKeyConstraint baseColumnNames="role_id"
+                                 baseTableName="user_role"
+                                 constraintName="FK_ROLE_ID"
+                                 referencedColumnNames="id"
+                                 referencedTableName="roles"/>
+    </changeSet>
+
+</databaseChangeLog>
