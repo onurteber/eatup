@@ -1,19 +1,15 @@
 package com.eatup.authserver.service.Impl;
 
-import com.eatup.authserver.entity.UserEntity;
 import com.eatup.authserver.model.LoginUserModel;
-import com.eatup.authserver.service.EatupCustomRepository;
+import com.eatup.authserver.service.EatupCustomQueryService;
 import org.springframework.stereotype.Service;
-import sun.rmi.runtime.Log;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Service
-public class EatupCustomRepositoryImp implements EatupCustomRepository {
+public class EatupCustomQueryServiceImp implements EatupCustomQueryService {
 
     @PersistenceContext
     private EntityManager em;

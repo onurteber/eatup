@@ -34,6 +34,7 @@ public class SecurityCredentialsConfig extends WebSecurityConfigurerAdapter {
 		    .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager(), jwtConfig))	
 		.authorizeRequests()
 				.antMatchers("/auth/signup").permitAll()
+				.antMatchers("/auth/swagger-ui").permitAll()
 		    .antMatchers(HttpMethod.POST, jwtConfig.getUri()).permitAll()
 		    .anyRequest().authenticated();
 	}

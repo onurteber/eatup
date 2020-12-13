@@ -1,8 +1,7 @@
 package com.eatup.authserver.security;
 
 import com.eatup.authserver.model.LoginUserModel;
-import com.eatup.authserver.repository.UserRepository;
-import com.eatup.authserver.service.EatupCustomRepository;
+import com.eatup.authserver.service.EatupCustomQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -22,7 +21,7 @@ public class UserDetailsServiceImpl implements UserDetailsService  {
 	private BCryptPasswordEncoder encoder;
 
 	@Autowired
-	private EatupCustomRepository eatupCustomRepository;
+	private EatupCustomQueryService eatupCustomRepository;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

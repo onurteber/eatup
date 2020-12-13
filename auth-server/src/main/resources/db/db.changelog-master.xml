@@ -74,5 +74,8 @@
                                  referencedColumnNames="id"
                                  referencedTableName="roles"/>
     </changeSet>
+    <changeSet id="addUniqueConstraint-username" author="onur">
+        <addUniqueConstraint tableName="users" columnNames="user_name" />
+    </changeSet>
 
 </databaseChangeLog>
